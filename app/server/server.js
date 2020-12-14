@@ -4,8 +4,6 @@ const express = require("express");
 const debug = require("debug")("staticFolio:server");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const checkSSORedirect = require("./middleware/checkSSORedirect");
-const expressSession = require("./expressSession");
 const devRebuildPage = require("../build/devFunctions/rebuildPage");
 const errorHandler = require("./errorHandler");
 const miscRoutes = require("./routes/miscRoutes");
@@ -41,12 +39,6 @@ const app = express();
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
-
-// express session configuration
-app.use(expressSession.session);
-
-// check for sign on communications from the sso server
-app.use(checkSSORedirect());
 
 // routes
 app.use("/build", buildRoutes);

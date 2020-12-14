@@ -58,7 +58,7 @@ const formCallback = async (fieldState, avoid, push) => {
 	// 3. replace the og value with our new one
 	// 4. submit that new array back as our updated sources list
 	const doc = await (
-		await fetch(`https://watch.rolandw.dev/page?_id=${_id}`)
+		await fetch(`https://api.blog.rolandw.dev/api/v1/watch/page?_id=${_id}`)
 	).json();
 
 	console.log(
@@ -98,7 +98,7 @@ const formCallback = async (fieldState, avoid, push) => {
 	const bodyString = JSON.stringify(body);
 
 	// send the post request
-	const url = `https://watch.rolandw.dev/update/${_id}`;
+	const url = `https://api.blog.rolandw.dev/api/v1/watch/update/${_id}`;
 	return fetch(url, {
 		method: "POST",
 		headers: {
@@ -118,7 +118,7 @@ const deleteCallback = async (_id, newValue, fieldName, value, firstValue) => {
 	// 2. remove the og value from it and keep everything else
 	// 4. submit that new array back as our updated sources list
 	const doc = await (
-		await fetch(`https://watch.rolandw.dev/page?_id=${_id}`)
+		await fetch(`https://api.blog.rolandw.dev/api/v1/watch/page?_id=${_id}`)
 	).json();
 
 	const sourceArray = doc.source;
@@ -146,7 +146,7 @@ const deleteCallback = async (_id, newValue, fieldName, value, firstValue) => {
 	// console.log(`update: ${JSON.stringify(update)}`);
 
 	// send the post request
-	const url = `https://watch.rolandw.dev/update/${_id}`;
+	const url = `https://api.blog.rolandw.dev/api/v1/watch/update/${_id}`;
 	return fetch(url, {
 		method: "POST",
 		headers: {

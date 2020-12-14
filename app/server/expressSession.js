@@ -11,4 +11,4 @@ const session = expressSession({
 	},
 });
 
-module.exports = { session };
+module.exports = session;

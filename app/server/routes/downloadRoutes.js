@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const buildRouter = require("./buildRouter");
-const verifyPayload = require("../middleware/verifyPayload");
 const debug = require("debug")("staticFolio:routers");
 const router = express.Router();
 
@@ -15,16 +14,13 @@ const urlencodedParser = bodyParser.urlencoded({
 	extended: true,
 });
 
-// ! remember to protect the routes in production
-//  [urlencodedParser, verifyBuilderPayload]
-
 // Download requests contain a req.body.markdown
 // which is used to write a markdown file in staticFolios content
 const routes = [
 	{
 		path: "/",
 		method: "post",
-		middleware: [urlencodedParser, verifyPayload],
+		middleware: [urlencodedParser],
 		handler: downloadPage,
 		help: {
 			description: "build 1 page without downloading",

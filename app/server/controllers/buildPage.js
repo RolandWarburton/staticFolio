@@ -20,21 +20,20 @@ const copy = util.promisify(fs.copyFile);
 const refreshPage = async (id) => {
 	// fetch the page fresh from blog watcher
 	debug("requesting the page and DOWNLOADING IT AGAIN", id);
-	const body = {
-		_id: id,
-	};
-	const sig = signPayload(body);
-	const headers = {
-		Authorization: "Bearer 3imim8awgeq99ikbmg14lnqe0fu8",
-		"x-payload-signature": sig,
-	};
+	// const body = {
+	// 	_id: id,
+	// };
+	// const sig = signPayload(body);
+	// const headers = {
+	// 	Authorization: "Bearer 3imim8awgeq99ikbmg14lnqe0fu8",
+	// 	"x-payload-signature": sig,
+	// };
 
 	debug("fetching...");
 	let result = await fetch(`${process.env.WATCHER_IP}/build/${id}`, {
-		method: "post",
-		headers: headers,
-		body: new URLSearchParams(body),
+		method: "get",
 	});
+	if (result.status != 200) debug(result);
 	result = await result.json();
 	page = result.page;
 	debug("returning page");

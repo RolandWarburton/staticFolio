@@ -29,7 +29,7 @@ const formCallback = async (fieldState, avoid, push) => {
 	const bodyString = JSON.stringify(body);
 
 	// send the post request
-	const url = `https://watch.rolandw.dev/update/${_id}`;
+	const url = `https://api.blog.rolandw.dev/api/v1/watch/update/${_id}`;
 	return fetch(url, {
 		method: "POST",
 		headers: {

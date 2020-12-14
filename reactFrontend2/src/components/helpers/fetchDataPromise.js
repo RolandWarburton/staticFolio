@@ -3,9 +3,9 @@ export default async (pageIndex, pageSize, searchFilter) => {
 
 	let url = "";
 	if (searchFilter) {
-		url = `https://watch.rolandw.dev/pages/${searchFilter}?${pagination}`;
+		url = `https://api.blog.rolandw.dev/api/v1/watch/pages/${searchFilter}?${pagination}`;
 	} else {
-		url = `https://watch.rolandw.dev/pages?${pagination}`;
+		url = `https://api.blog.rolandw.dev/api/v1/watch/pages?${pagination}`;
 	}
 
 	console.log(`fetching items ${url}`);

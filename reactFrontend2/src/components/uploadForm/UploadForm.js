@@ -36,7 +36,7 @@ const submitHandler = async ({
 	source,
 	meta,
 }) => {
-	const postURL = `https://watch.rolandw.dev/upload`;
+	const postURL = `https://api.blog.rolandw.dev/api/v1/watch/upload`;
 
 	// theres no support for electing a page as "not remote" right now
 	// this is just a hack to make it play nice by adding the {remote: true} field to each page source

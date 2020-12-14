@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const buildRouter = require("./buildRouter");
-const verifyPayload = require("../middleware/verifyPayload");
 const debug = require("debug")("staticFolio:routers");
 const router = express.Router();
 
@@ -9,22 +8,17 @@ const router = express.Router();
 const buildPage = require("../controllers/buildPage");
 const buildPages = require("../controllers/buildPages");
 
-// ! Single Sign On system
-const isAuthenticated = require("../middleware/isAuthenticated");
-
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({
 	limit: "50mb",
 	extended: true,
 });
 
-// ! remember to protect the routes in production
-//  [urlencodedParser, verifyPayload]
 const routes = [
 	{
 		path: "/build_ui",
 		method: "get",
-		middleware: [isAuthenticated],
+		middleware: [],
 		handler: (req, res) => {
 			res.render("index.ejs");
 		},
@@ -38,7 +32,7 @@ const routes = [
 	{
 		path: "/",
 		method: "get",
-		middleware: [isAuthenticated],
+		middleware: [],
 		handler: (req, res) => {
 			debug(`This session is: ${req.session.id}`);
 			res.status(200).json({

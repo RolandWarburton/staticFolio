@@ -19,9 +19,8 @@ const getPage = async (websitePath) => {
 	const url = `${process.env.WATCHER_IP}/page?websitePath=${websitePath}`;
 
 	return fetch(url, {
-		method: "post",
+		method: "get",
 		headers: headers,
-		body: new URLSearchParams(body),
 	});
 };
 
